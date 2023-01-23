@@ -10,7 +10,7 @@ function ProjectList({ projects }: ProjectListProps) {
     return (
         <div className="row">
             {projects.map((project) => (
-                <ProjectCard project={project} />
+                <ProjectCard project={project} key={project.id} />
                 ))}
             </div>
     );
