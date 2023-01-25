@@ -128,7 +128,7 @@ function ProjectForm({
         <button className="primary bordered medium">Save</button>
         <span></span>
         <button type="button" className="bordered medium" onClick={onCancel}>
-          cancel
+          test
         </button>
       </div>
     </form>

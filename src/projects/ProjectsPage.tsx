@@ -1,6 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { projectAPI } from "./ProjectAPI";
-import { MOCK_PROJECTS } from "./MockProjects";
 import ProjectList from "./ProjectList";
 import { Project } from "./Project";
 
@@ -9,10 +8,19 @@ function ProjectsPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | undefined>(undefined);
   const saveProject = (project: Project) => {
-    let updatedProjects = projects.map((p: Project) => {
-      return p.id === project.id ? project : p;
-    });
-    setProjects(updatedProjects);
+    projectAPI
+      .put(project)
+      .then((updatedProject) => {
+        let updatedProjects = projects.map((p: Project) => {
+          return p.id === project.id ? new Project(updatedProject) : p;
+        });
+        setProjects(updatedProjects);
+      })
+      .catch((e) => {
+        if (e instanceof Error) {
+          setError(e.message);
+        }
+      });
   };
   useEffect(() => {
     async function loadProjects() {
