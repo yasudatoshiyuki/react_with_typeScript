@@ -1,11 +1,10 @@
-import React from 'react';
-import './App.css';
-import { Project } from './projects/Project';
-import ProjectsPage from './projects/ProjectsPage';
+import React from "react";
+import "./App.css";
+import ProjectsPage from "./projects/ProjectsPage";
 
 function App() {
   return (
-    <div className='container'>
+    <div className="container">
       <ProjectsPage />
     </div>
   );
